@@ -1,12 +1,37 @@
-beforeEach(function () {
-    for (const key in employee) {
-      delete employee[key];
-    }
+const employee = {
+  name: " ",
+  streetAddress: " ",
+};
 
-    employee.name = 'Sam';
-  });
+function updateEmployeeWithKeyAndValue(obj, key, value) {
+  const newObj = {...obj };
 
-  const employee = {}
-  function updateEmployeeWithKeyAndValue(employee, key, value) {
-    return Object.assign({}, employee, { [key]: value });
-  }
+  newObj[key] = value;
+  
+  return newObj;
+}
+
+const newEmployee = updateEmployeeWithKeyAndValue(employee, "name", "Sammy");
+
+function destructivelyUpdateEmployeeWithKeyAndValue(obj, key, value) {
+  obj[key] = value;
+  return obj;
+}
+
+destructivelyUpdateEmployeeWithKeyAndValue(employee, "name", "Sammy");
+
+function deleteFromEmployeeByKey(obj, key) {
+  const newObj = {...obj };
+
+  delete newObj[key];
+  return newObj;
+}
+
+deleteFromEmployeeByKey(employee, "name");
+
+function destructivelyDeleteFromEmployeeByKey(obj, key) {
+  delete obj[key];
+  return obj;
+}
+
+destructivelyDeleteFromEmployeeByKey(employee, "name");
