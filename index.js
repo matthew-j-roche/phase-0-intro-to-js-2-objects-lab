@@ -1,37 +1,34 @@
-const employee = {
-  name: " ",
-  streetAddress: " ",
-};
+ const employee = {
+  name: "Sam",
+  streetAddress: "15 Gob Road"
+ };
 
-function updateEmployeeWithKeyAndValue(obj, key, value) {
-  const newObj = {...obj };
+ function updateEmployeeWithKeyAndValue(employee, key, value) {
+  const updatedEmployee = {...employee};
+  updatedEmployee[key] = value;
+  return updatedEmployee;
+ };
 
-  newObj[key] = value;
-  
-  return newObj;
-}
+ updateEmployeeWithKeyAndValue(employee, "streetAddress", "11 Broadway");
 
-const newEmployee = updateEmployeeWithKeyAndValue(employee, "name", "Sammy");
+ function destructivelyUpdateEmployeeWithKeyAndValue(employee, key, value) {
+  employee[key] = value;
+  return employee;
+ }
 
-function destructivelyUpdateEmployeeWithKeyAndValue(obj, key, value) {
-  obj[key] = value;
-  return obj;
-}
+ destructivelyUpdateEmployeeWithKeyAndValue(employee, "streetAddress", "12 Broadway");
 
-destructivelyUpdateEmployeeWithKeyAndValue(employee, "name", "Sammy");
+ function deleteFromEmployeeByKey(employee, key) {
+  const newEmployee = {...employee};
+  delete newEmployee[key];
+  return newEmployee;
+ };
 
-function deleteFromEmployeeByKey(obj, key) {
-  const newObj = {...obj };
+ deleteFromEmployeeByKey(employee, 'name');
+ 
+ function destructivelyDeleteFromEmployeeByKey(employee, key) {
+  delete employee[key];
+  return employee;
+ };
 
-  delete newObj[key];
-  return newObj;
-}
-
-deleteFromEmployeeByKey(employee, "name");
-
-function destructivelyDeleteFromEmployeeByKey(obj, key) {
-  delete obj[key];
-  return obj;
-}
-
-destructivelyDeleteFromEmployeeByKey(employee, "name");
+destructivelyDeleteFromEmployeeByKey(employee, 'name'); 
